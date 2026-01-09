@@ -11,10 +11,13 @@
         </mat-card-content>
         <mat-card-actions>
             @if(!assignmentTransmis.rendu) {
-                <mat-checkbox (click)="onAssignmentRendu();">
-                    Rendu
-                </mat-checkbox>
+            <mat-checkbox (click)="onAssignmentRendu();">
+                Rendu
+            </mat-checkbox>
             }
+            <button matButton="filled" color="warn" (click)="onDeleteAssignment();">
+                DELETE
+            </button>
         </mat-card-actions>
     </mat-card-header>
 </mat-card>

@@ -12,6 +12,7 @@ import { NonRendu } from '../shared/non-rendu';
 import { Assignment } from './assignment.model';
 import { AssignmentDetail } from '../assignment-detail/assignment-detail';
 import { AddAssignment } from '../add-assignment/add-assignment';
+import { AssignmentsService } from '../shared/assignments.service';
 
 @Component({
   selector: 'app-assignments',
@@ -25,35 +26,27 @@ export class Assignments implements OnInit {
   title = 'List of assignments';
   //ajoutActive = false;
   formVisible = false;
-
   assignmentSelectionne?: Assignment;
+  // an array of assignments objets
+  assignments: Assignment[] = [];
 
+  constructor(private assignmentsService: AssignmentsService) {
+  }
+
+  // appelé avant le rendu, c'est une méthode du cycle de vie 
+  // d'un composant
   ngOnInit(): void {
     console.log("Assignments component initialized, before rendering");
-    /*
-    setTimeout(() => {
-      this.ajoutActive = true;
-    }, 2000);
-    */
+ 
+    this.assignmentsService.getAssignments()
+      .subscribe(assignents => {
+        this.assignments = assignents;
+        console.log("Données des assignments reçues du service:");
+      });
+
+      console.log("Demande de récupération des assignments envoyée au service.");
+
   }
-  // an array of assignments objets
-  assignments = [
-    {
-      nom: 'Math Homework',
-      dateDeRendu: new Date('2023-10-01'),
-      rendu: true
-    },
-    {
-      nom: 'Science Project',
-      dateDeRendu: new Date('2023-10-05'),
-      rendu: false
-    },
-    {
-      nom: 'History Essay',
-      dateDeRendu: new Date('2023-10-10'),
-      rendu: false
-    },
-  ];
 
 
   assignmentClique(assignment: Assignment | undefined) {
@@ -66,9 +59,25 @@ export class Assignments implements OnInit {
     this.formVisible = true;
   }
 
+  // ajout d'une méthode pour gérer l'événement nouvelAssignment
   onNouvelAssignment(nouvelAssignment: Assignment) {
     console.log("Nouvel assignment reçu:", nouvelAssignment);
-    this.assignments.push(nouvelAssignment);
+    //this.assignments.push(nouvelAssignment);
     this.formVisible = false;
+  }
+
+  // méthode pour gérer la suppression d'un assignment
+  onDeleteAssignment() {
+    console.log("########Suppression de l'assignment transmis");
+
+    // L'assignment à supprimer est celui actuellement sélectionné
+    // on récupère l'index de cet assignment dans le tableau
+    if (this.assignmentSelectionne) {
+      const index = this.assignments.indexOf(this.assignmentSelectionne);
+      this.assignments.splice(index, 1);
+
+      // Pour ne plus que le détail de cet assignment s'affiche
+      this.assignmentSelectionne = undefined;
+    }
   }
 }
