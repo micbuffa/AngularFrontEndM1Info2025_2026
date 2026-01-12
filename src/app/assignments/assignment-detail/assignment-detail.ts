@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Assignment } from '../assignments/assignment.model';
+import { Assignment } from '../assignment.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { AssignmentsService } from '../shared/assignments.service';
+import { AssignmentsService } from '../../shared/assignments.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

@@ -10,8 +10,8 @@ import { CommonModule } from '@angular/common';
 import { Rendu } from '../shared/rendu';
 import { NonRendu } from '../shared/non-rendu';
 import { Assignment } from './assignment.model';
-import { AssignmentDetail } from '../assignment-detail/assignment-detail';
-import { AddAssignment } from '../add-assignment/add-assignment';
+import { AssignmentDetail } from './assignment-detail/assignment-detail';
+import { AddAssignment } from './add-assignment/add-assignment';
 import { AssignmentsService } from '../shared/assignments.service';
 
 @Component({

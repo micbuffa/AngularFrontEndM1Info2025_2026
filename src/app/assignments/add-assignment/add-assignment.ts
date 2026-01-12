@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Assignment } from '../assignments/assignment.model';
+import { Assignment } from '../assignment.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
-import { AssignmentsService } from '../shared/assignments.service';
+import { AssignmentsService } from '../../shared/assignments.service';
 import { Router } from '@angular/router';
 
 @Component({
