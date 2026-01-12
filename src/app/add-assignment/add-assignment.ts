@@ -6,6 +6,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { AssignmentsService } from '../shared/assignments.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-assignment',
@@ -19,7 +20,9 @@ export class AddAssignment {
   @Output()
   nouvelAssignment = new EventEmitter<Assignment>();
 
-  constructor(private assignmentsService: AssignmentsService) {}
+  constructor(private assignmentsService: AssignmentsService,
+              private router: Router
+  ) {}
 
   onSubmit(event:any) {
       const newAssignment = new Assignment();
@@ -33,6 +36,9 @@ export class AddAssignment {
       this.assignmentsService.addAssignment(newAssignment)
         .subscribe(message => {
           console.log(message);
+
+          // On va naviguer vers la page d'accueil après l'ajout
+          this.router.navigate(['/home']);
         });
     }
   
