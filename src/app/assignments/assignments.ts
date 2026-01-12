@@ -3,7 +3,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 
 import { MatListModule } from '@angular/material/list';
-
+import { RouterLink } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 
@@ -17,7 +17,7 @@ import { AssignmentsService } from '../shared/assignments.service';
 @Component({
   selector: 'app-assignments',
   imports: [MatDividerModule, Rendu, NonRendu, MatButtonModule, AssignmentDetail,
-    MatListModule, CommonModule, AddAssignment
+    MatListModule, CommonModule, AddAssignment, RouterLink
   ],
   templateUrl: './assignments.html',
   styleUrl: './assignments.css',
@@ -69,15 +69,7 @@ export class Assignments implements OnInit {
   // méthode pour gérer la suppression d'un assignment
   onDeleteAssignment() {
     console.log("########Suppression de l'assignment transmis");
-
-    // L'assignment à supprimer est celui actuellement sélectionné
-    // on récupère l'index de cet assignment dans le tableau
-    if (this.assignmentSelectionne) {
-      const index = this.assignments.indexOf(this.assignmentSelectionne);
-      this.assignments.splice(index, 1);
-
       // Pour ne plus que le détail de cet assignment s'affiche
       this.assignmentSelectionne = undefined;
-    }
   }
 }

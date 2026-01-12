@@ -42,4 +42,9 @@ export class AssignmentsService {
     this.assignments.splice(index, 1);
     return of("Assignment deleted successfully");
   }
+
+  // modification d'un assignment
+  updateAssignment(assignment: Assignment): Observable<string> {
+      return of("Assignment updated successfully");
+  }
 }

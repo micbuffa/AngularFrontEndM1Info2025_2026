@@ -7,11 +7,12 @@
 } @else {
    <p>Cliquez sur le bouton pour ajouter un nouvel assignment.</p>
 
-<div class="container">
-    <button mat-flat-button color="accent" class="ajout-btn"
-        (click)="onAddAssignmentBtnClick()"
-    >   Ajouter Assignment
+<div >
+  <a routerLink="/add" class="container">
+    <button mat-flat-button color="accent" class="ajout-btn">   
+    Ajouter Assignment
     </button>
+  </a>
 </div>
 
 
