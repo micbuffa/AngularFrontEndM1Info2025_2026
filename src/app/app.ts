@@ -4,13 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { Assignments } from './assignments/assignments';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink,
-    MatButtonModule, MatDividerModule, MatIconModule, Assignments],
+    MatButtonModule, MatDividerModule, MatIconModule, 
+    MatToolbarModule, Assignments],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

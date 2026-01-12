@@ -1,16 +1,12 @@
 <h2>{{ title }}</h2>
 <h2>Add new Assignment</h2>
 
-@if(formVisible) {
-   <app-add-assignment 
-     (nouvelAssignment)="onNouvelAssignment($event)"></app-add-assignment>
-} @else {
-   <p>Cliquez sur le bouton pour ajouter un nouvel assignment.</p>
+<p>Cliquez sur le bouton pour ajouter un nouvel assignment.</p>
 
-<div >
+<div>
   <a routerLink="/add" class="container">
-    <button mat-flat-button color="accent" class="ajout-btn">   
-    Ajouter Assignment
+    <button mat-flat-button color="accent" class="ajout-btn">
+      Ajouter Assignment
     </button>
   </a>
 </div>
@@ -19,32 +15,31 @@
 <mat-list>
   @for (assignment of assignments; track assignment.nom) {
 
-    <h3 mat-subheader>
-      {{ assignment.dateDeRendu | date:'dd/MM/yyyy' }}
-    </h3>
+  <h3 mat-subheader>
+    {{ assignment.dateDeRendu | date:'dd/MM/yyyy' }}
+  </h3>
 
-    <mat-list-item (click)="assignmentClique(assignment);">
-      <div matListItemTitle>{{ assignment.nom }}</div>
+  <nav>
+    <a routerLink="/assignments/{{ assignment.id }}">
+      <mat-list-item>
+        <div matListItemTitle>{{ assignment.nom }}</div>
 
-      @if (assignment.rendu) {
+        @if (assignment.rendu) {
         <p appRendu matListItemLine>
           … a été rendu le {{ assignment.dateDeRendu | date:'dd/MM/yyyy' }}
         </p>
-      } @else {
+        } @else {
         <p appNonRendu matListItemLine>
           Non rendu : date limite : {{ assignment.dateDeRendu | date:'dd/MM/yyyy' }}
         </p>
-      }
-    </mat-list-item>
-
-    <mat-divider></mat-divider>
+        }
+      </mat-list-item>
+    </a>
+  </nav>
+  <mat-divider></mat-divider>
   }
 </mat-list>
 
-<app-assignment-detail [assignmentTransmis]="assignmentSelectionne"
-                       (deleteAssignment)="onDeleteAssignment();"
-  >
-</app-assignment-detail>
 <!--
 
 <h2>Here as a table</h2>
@@ -60,4 +55,3 @@
     </tr>
     }
 -->
-}

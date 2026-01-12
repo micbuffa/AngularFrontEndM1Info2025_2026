@@ -8,16 +8,19 @@ import { Observable, of } from 'rxjs';
 export class AssignmentsService {
   assignments: Assignment[] = [
     {
+      id:1,
       nom: 'Math Homework',
       dateDeRendu: new Date('2023-10-01'),
       rendu: true
     },
     {
+      id:2,
       nom: 'Science Project',
       dateDeRendu: new Date('2023-10-05'),
       rendu: false
     },
     {
+      id:3,
       nom: 'History Essay',
       dateDeRendu: new Date('2023-10-10'),
       rendu: false
@@ -27,6 +30,12 @@ export class AssignmentsService {
   // Méthode pour récupérer tous les assignments
   getAssignments(): Observable<Assignment[]> {
     return of(this.assignments);
+  }
+
+  // get assignment by id
+  getAssignment(id: number): Observable<Assignment | undefined> {
+    const assignment = this.assignments.find(a => a.id === id);
+    return of(assignment);
   }
 
   // ajout d'un assignment

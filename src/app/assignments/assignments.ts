@@ -24,9 +24,6 @@ import { AssignmentsService } from '../shared/assignments.service';
 })
 export class Assignments implements OnInit {
   title = 'List of assignments';
-  //ajoutActive = false;
-  formVisible = false;
-  assignmentSelectionne?: Assignment;
   // an array of assignments objets
   assignments: Assignment[] = [];
 
@@ -45,31 +42,5 @@ export class Assignments implements OnInit {
       });
 
       console.log("Demande de récupération des assignments envoyée au service.");
-
-  }
-
-
-  assignmentClique(assignment: Assignment | undefined) {
-    console.log("Assignment clicked:", assignment);
-    this.assignmentSelectionne = assignment;
-
-  }
-
-  onAddAssignmentBtnClick() {
-    this.formVisible = true;
-  }
-
-  // ajout d'une méthode pour gérer l'événement nouvelAssignment
-  onNouvelAssignment(nouvelAssignment: Assignment) {
-    console.log("Nouvel assignment reçu:", nouvelAssignment);
-    //this.assignments.push(nouvelAssignment);
-    this.formVisible = false;
-  }
-
-  // méthode pour gérer la suppression d'un assignment
-  onDeleteAssignment() {
-    console.log("########Suppression de l'assignment transmis");
-      // Pour ne plus que le détail de cet assignment s'affiche
-      this.assignmentSelectionne = undefined;
   }
 }

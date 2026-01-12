@@ -26,14 +26,13 @@ export class AddAssignment {
       newAssignment.nom = this.nomAssignment;
       newAssignment.dateDeRendu = this.dateDeRendu;
       newAssignment.rendu = false; // or true, depending on your logic
+      newAssignment.id = Math.floor(Math.random() * 1000000); // Assign a random id
       //this.assignments.push(newAssignment);
       //this.nouvelAssignment.emit(newAssignment);
       // on demande au service d'ajouter l'assignment
       this.assignmentsService.addAssignment(newAssignment)
         .subscribe(message => {
           console.log(message);
-          // pour le moment on envoie encore l'event
-          this.nouvelAssignment.emit(newAssignment);
         });
     }
   
